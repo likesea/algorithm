@@ -63,15 +63,20 @@ public class SortCompare {
 		}
 		return total;
 	}
-	public static void main(String[] args){
-		String alg1 = args[0];
-		String alg2 = args[1];
-		int N =Integer.parseInt(args[2]);
-		int T =Integer.parseInt(args[3]);
+	public static void testAlg(String alg1,String alg2,int N,int T) {
 		double t1 = timeRandomInput(alg1, N, T); // total for alg1
 		double t2 = timeRandomInput(alg2, N, T); // total for alg2
+		System.out.println(alg1+": "+t1);
+		System.out.println(alg2+": "+t2);
 		StdOut.printf("For %d random Doubles\n %s is", N, alg1);
 		StdOut.printf(" %.1f times faster than %s\n", t2/t1, alg2);
+	}
+	public static void main(String[] args){
+		String alg1 = "insertSort";
+		String alg2 = "insertSort1";
+		int N =1000;
+		int T =400;
+		testAlg(alg1, alg2, N, T);
 		
 	}
 }
