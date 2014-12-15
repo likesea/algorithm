@@ -1,4 +1,4 @@
-package com.yanbin.sort.test;
+package src.com.yanbin.sort.test;
 
 import java.util.Random;
 
