@@ -1,6 +1,7 @@
 package com.yanbin.sort;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Exchanger;
 
 import com.yanbin.sort.util.*;
 
@@ -49,12 +50,34 @@ public class Sort {
 			a[j]=temp;
 		}
 	}
+	/**
+	 * 3向切分实现，对于重复元素比较多的数组比较有效，也是以首元素作为分割点的
+	 * @param a
+	 * @param lo
+	 * @param hi
+	 */
+	public static void quick3Way(Comparable[]  a,int lo,int hi){
+		if(hi<=lo) return;
+		int lt=lo,i=lo+1,gt=hi;
+		Comparable v =a[lo];
+		while(i<=gt){
+			int cmp=a[i].compareTo(v);
+			if(cmp<0) 
+				Util.exch(a, lt++, i++);
+			else if(cmp>0) 
+				Util.exch(a, i, gt--);
+			else 
+				i++;
+		}
+		quick3Way(a, lo, lt-1);
+		quick3Way(a, gt+1, hi);
+	}
 	public static void main(String[] args)
 	{
 		String test="fkasjkfhsaoif";
 		//List<Character> list= new ArrayList<Character>();
-		Character[] list = {'w','r','a','g'};
-		insertSort1(list);
+		Character[] list = {'r','g','w','a','r','s','b','r','y','w','b','r'};
+		quick3Way(list,0,11);
 		for (Character character : list) {
 			System.out.print (character+" ");
 		}
