@@ -73,7 +73,7 @@ public class SortCompare {
 	}
 	public static void main(String[] args){
 		String alg1 = "insertSort";
-		String alg2 = "insertSort1";
+		String alg2 = "quickSort3Way";
 		int N =1000;
 		int T =400;
 		testAlg(alg1, alg2, N, T);

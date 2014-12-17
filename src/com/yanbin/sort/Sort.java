@@ -50,6 +50,9 @@ public class Sort {
 			a[j]=temp;
 		}
 	}
+	public static void quickSort3Way(Comparable[] a) {
+		quick3Way(a, 0, a.length-1);
+	}
 	/**
 	 * 3向切分实现，对于重复元素比较多的数组比较有效，也是以首元素作为分割点的
 	 * @param a
