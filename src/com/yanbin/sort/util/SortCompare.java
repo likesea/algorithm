@@ -72,10 +72,10 @@ public class SortCompare {
 		StdOut.printf(" %.1f times faster than %s\n", t2/t1, alg2);
 	}
 	public static void main(String[] args){
-		String alg1 = "insertSort";
-		String alg2 = "quickSort3Way";
-		int N =1000;
-		int T =400;
+		String alg1 = "mergeSort1";
+		String alg2 = "mergeSort";
+		int N =10000;
+		int T =500;
 		testAlg(alg1, alg2, N, T);
 		
 	}
