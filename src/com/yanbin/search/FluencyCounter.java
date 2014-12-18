@@ -1,38 +1,36 @@
 package com.yanbin.search;
 
 import com.yanbin.util.ST;
+import com.yanbin.util.SequentialSearchST;
 import com.yanbin.util.StdIn;
 import com.yanbin.util.StdOut;
+import com.yanbin.util.VisualAccumulator;
 public class FluencyCounter {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int distinct = 0,words=0;
 		int minlen = Integer.parseInt(args[0]);
-		ST<String, Integer> st = new ST<String, Integer>();
+		SequentialSearchST<String, Integer> st =new SequentialSearchST<String, Integer>();
 		String keyString;
+		int compare=0;
+		VisualAccumulator accumulator = new VisualAccumulator(15000, 5000);
 		while(!StdIn.isEmpty()){
 			keyString=StdIn.readString();
 			if(keyString.length()<minlen) continue;
 			words++;
 			if(st.contains(keyString)){
+				
 				st.put(keyString, st.get(keyString)+1);
 			}
 			else{
 				st.put(keyString, 1);
 				distinct++;
 			}
+			compare= st.getCompareTimes();
+			accumulator.addDataValue((double)compare);
 		}
-		String maxString="";
-		st.put(maxString, 0);
-		for (String word : st.keys()) {
-			if(st.get(word)>st.get(maxString)){
-				maxString=word;
-			}
-		}
-		StdOut.println(maxString + " " + st.get(maxString));
-        StdOut.println("distinct = " + distinct);
-        StdOut.println("words    = " + words);
+		
 	}
 
 }

@@ -10,6 +10,7 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 public class SequentialSearchST<Key,Value> {
 	private int N;
+	private int compareTimes=0;
 	private Node first;
 	private class Node{
 		private Key key;
@@ -18,7 +19,7 @@ public class SequentialSearchST<Key,Value> {
 		public Node(Key key,Value value,Node node){
 			this.key=key;
 			this.value=value;
-			this.next=next;
+			this.next=node;
 		}
 	}
 	public SequentialSearchST(){}
@@ -52,11 +53,20 @@ public class SequentialSearchST<Key,Value> {
 	public void put(Key key,Value value) {
 		if(value==null){delete(key);return ;}
 		for(Node x = first;x!=null;x=x.next){
-			if(x.key==key){
+			compareTimes++;
+			if(x.key.equals(key)){
 				x.value=value;
 				return ;
 			}
 		}
 		first = new Node(key,value,first);
+	}
+	public boolean contains(Key key) {
+	        return get(key) != null;
+	    }
+	public int getCompareTimes() {
+		int temp=compareTimes;
+		compareTimes=0;
+		return temp;
 	}
 }
