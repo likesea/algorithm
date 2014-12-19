@@ -11,7 +11,13 @@ public class FluencyCounter {
 		// TODO Auto-generated method stub
 		int distinct = 0,words=0;
 		int minlen = Integer.parseInt(args[0]);
+		
+		//BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(1000);
+		
 		SequentialSearchST<String, Integer> st =new SequentialSearchST<String, Integer>();
+		
+		
+		
 		String keyString;
 		int compare=0;
 		VisualAccumulator accumulator = new VisualAccumulator(15000, 5000);
@@ -30,6 +36,7 @@ public class FluencyCounter {
 			compare= st.getCompareTimes();
 			accumulator.addDataValue((double)compare);
 		}
+		System.out.println(accumulator.mean());
 		
 	}
 
