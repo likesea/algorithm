@@ -15,16 +15,17 @@ public class FluencyCounter {
 		//BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>(1000);
 		
 		SequentialSearchST<String, Integer> st =new SequentialSearchST<String, Integer>();
-		
+		//BST<String, Integer> st = new BST<String, Integer>();
 		
 		
 		String keyString;
 		int compare=0;
-		VisualAccumulator accumulator = new VisualAccumulator(15000, 5000);
+		VisualAccumulator accumulator = new VisualAccumulator(15000, 500);
 		while(!StdIn.isEmpty()){
 			keyString=StdIn.readString();
 			if(keyString.length()<minlen) continue;
 			words++;
+			
 			if(st.contains(keyString)){
 				
 				st.put(keyString, st.get(keyString)+1);
